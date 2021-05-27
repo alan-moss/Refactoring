@@ -69,7 +69,7 @@ this task
 	public static Hero chooseHero()
 	{
 		int choice;
-		Hero theHero;
+		// Hero theHero;
 
 		System.out.println("Choose a hero:\n" +
 					       "1. Warrior\n" +
