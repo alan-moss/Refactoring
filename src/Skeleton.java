@@ -1,30 +1,30 @@
+//Skeleton subclass
 
-
-/**
- * Title:
- * Description:
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
-public class Skeleton extends Monster
-{
+public class Skeleton extends Monster {
+	
+	//Skeleton data fields
+	protected static String name = "Sargath the Skeleton";
+	protected static int hitPoints = 100;
+	protected static int attackSpeed = 3;
+	protected static double chanceToHit = 0.8;
+	protected static double chanceToHeal = 0.3;
+	protected static int damageMin = 30;
+	protected static int damageMax = 50;
+	protected static int minHeal = 30;
+	protected static int maxHeal = 50;
 
     public Skeleton()
 	{
-		super("Sargath the Skeleton", 100, 3, .8, .3, 30, 50, 30, 50);
+		super(name, hitPoints, attackSpeed, chanceToHit, chanceToHeal, damageMin, damageMax, minHeal, maxHeal);
 
-    }//end constructor
-
-	public void attack(DungeonCharacter opponent)
+    }
+    
+    @Override
+	public void attack(Hero opponent)
 	{
 		System.out.println(name + " slices his rusty blade at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 
-	}//end override of attack
-
-
-}//end class Skeleton
+	}
+}

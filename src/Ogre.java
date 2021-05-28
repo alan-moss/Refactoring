@@ -1,31 +1,29 @@
+//Ogre subclass
 
+public class Ogre extends Monster {
+	
+	//Ogre data fields
+	protected static String name = "Oscar the Ogre";
+	protected static int hitPoints = 200;
+	protected static int attackSpeed = 2;
+	protected static double chanceToHit = 0.6;
+	protected static double chanceToHeal = 0.1;
+	protected static int damageMin = 30;
+	protected static int damageMax = 50;
+	protected static int minHeal = 30;
+	protected static int maxHeal = 50;
 
-/**
- * Title:
- * Description:
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
+	public Ogre() {
+			
+		super(name, hitPoints, attackSpeed, chanceToHit, chanceToHeal, damageMin, damageMax, minHeal, maxHeal);
 
-public class Ogre extends Monster
-{
-
-    public Ogre()
-	{
-		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
-
-
-    }//end constructor
-
-	public void attack(DungeonCharacter opponent)
-	{
-		System.out.println(name + " slowly swings a club toward's " +
-							opponent.getName() + ":");
+	}
+	    
+	@Override
+	public void attack(Hero opponent) {
+			
+		System.out.println(name + " slowly swings a club toward's " + opponent.getName() + ":");
 		super.attack(opponent);
 
-	}//end override of attack
-
-
-}//end Monster class
+	}
+}

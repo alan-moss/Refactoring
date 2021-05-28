@@ -1,33 +1,43 @@
+//Sorceress subclass
 
-
-/**
- * Title:
- * Description:
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
-
-
-public class Sorceress extends Hero
-{
+public class Sorceress extends Hero {
+	
+	//Sorceress data fields
+	protected static String classType = "Thief";
+	protected static int hitPoints = 75;
+	protected static int attackSpeed = 5;
+	protected static double chanceToHit = 0.7;
+	protected static int damageMin = 25;
+	protected static int damageMax = 50;
+	protected static double chanceToBlock = 0.3;
 	public final int MIN_ADD = 25;
 	public final int MAX_ADD = 50;
 
-//-----------------------------------------------------------------
-    public Sorceress()
+	protected static String specialAttack = "Increase Hit Points";
+	
+	public Sorceress()
 	{
-		super("Sorceress", 75, 5, .7, 25, 50, .3);
+		super(classType, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack);
 
-
-    }//end constructor
-
-//-----------------------------------------------------------------
-	public void increaseHitPoints()
-    {
-	    int hPoints;
+    }
+	
+	//Return the special attack name
+	public String specialAttack() {
+		return specialAttack;
+	}
+	
+	@Override
+	public void attack(Monster opponent)
+	{
+		System.out.println(name + " casts a spell of fireball at " + opponent.getName() + ":");
+		super.attack(opponent);
+	}
+	
+	@Override
+	//Thief specific attack, Surprise Attack. This overrides the special attack from the super class
+	public void specialAttack(Monster opponent) {
+		
+		int hPoints;
 
 		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
 		addHitPoints(hPoints);
@@ -36,45 +46,5 @@ public class Sorceress extends Hero
 							+ hitPoints);
 		 System.out.println();
 
-    }//end increaseHitPoints method
-
-//-----------------------------------------------------------------
-	public void attack(DungeonCharacter opponent)
-	{
-		System.out.println(name + " casts a spell of fireball at " +
-							opponent.getName() + ":");
-		super.attack(opponent);
-	}//end override of attack method
-
-//-----------------------------------------------------------------
-    public void battleChoices(DungeonCharacter opponent)
-	{
-		super.battleChoices(opponent);
-		int choice;
-
-		do
-		{
-		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. Increase Hit Points");
-		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
-
-		    switch (choice)
-		    {
-			    case 1: attack(opponent);
-			        break;
-			    case 2: increaseHitPoints();
-			        break;
-			    default:
-			        System.out.println("invalid choice!");
-		    }//end switch
-
-			numTurns--;
-		    if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
-
-		} while(numTurns > 0 && hitPoints > 0 && opponent.getHitPoints() > 0);
-
-    }//end overridden method
-
-}//end class
+	}
+}

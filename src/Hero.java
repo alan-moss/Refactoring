@@ -1,126 +1,169 @@
+//Hero superclass for Warrior, Thief, and Sorceress
 
-
-/**
- * Title: Hero.java
- *
- * Description: Abstract base class for a hierarchy of heroes.  It is derived
- *  from DungeonCharacter.  A Hero has battle choices: regular attack and a
- *  special skill which is defined by the classes derived from Hero.
- *
- *  class variables (all are directly accessible from derived classes):
- *    chanceToBlock -- a hero has a chance to block an opponents attack
- *    numTurns -- if a hero is faster than opponent, their is a possibility
- *                for more than one attack per round of battle
- *
- *  class methods (all are public):
- *    public Hero(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock)
-	  public void readName()
-	  public boolean defend()
-	  public void subtractHitPoints(int hitPoints)
-	  public void battleChoices(DungeonCharacter opponent)
-
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
-
-public abstract class Hero extends DungeonCharacter
-{
+public class Hero implements DungeonCharacter {
+	
+	//Hero data fields
+	protected String classType;
+	protected String name;
+	protected String specialAttack;
+	protected int hitPoints;
+	protected int attackSpeed;
+	protected double chanceToHit;
+	protected int damageMin, damageMax;
 	protected double chanceToBlock;
 	protected int numTurns;
+	
+	//Hero Constructor
+	public Hero(String classType, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax,
+			double chanceToBlock, String specialAttack) {
 
-//-----------------------------------------------------------------
-//calls base constructor and gets name of hero from user
-  public Hero(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock)
-  {
-	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
-	this.chanceToBlock = chanceToBlock;
-	readName();
-  }
-
-/*-------------------------------------------------------
-readName obtains a name for the hero from the user
-
-Receives: nothing
-Returns: nothing
-
-This method calls: nothing
-This method is called by: hero constructor
----------------------------------------------------------*/
-  public void readName()
-  {
+		this.name = readName();
+		this.classType = classType;
+		this.hitPoints = hitPoints;
+		this.attackSpeed = attackSpeed;
+		this.chanceToHit = chanceToHit;
+		this.damageMin = damageMin;
+		this.damageMax = damageMax;
+		this.chanceToBlock = chanceToBlock;
+		this.specialAttack = specialAttack;
+		
+	}
+	
+	//Get the characters name from the user
+	public String readName() {
+		
 		System.out.print("Enter character name: ");
 		name = Keyboard.readString();
-  }//end readName method
+		
+		return name;
+		
+	}
+	
+	//Implement DungeonCharacter interface methods
+	//--------------------------------------------
+	
+	public String getName() {
+		return this.name;
+	}
 
-/*-------------------------------------------------------
-defend determines if hero blocks attack
+	public int getHitPoints() {
+		return this.hitPoints;
+	}
 
-Receives: nothing
-Returns: true if attack is blocked, false otherwise
+	public int getAttackSpeed() {
+		return this.attackSpeed;
+	}
+	
+	public boolean isAlive() {
+	  return (this.hitPoints > 0);
+	}
+	
+	public void subtractHitPoints(int hitPoints) {
+		
+		if (defend()) {
+			
+			System.out.println(getName() + " BLOCKED the attack!");
+			
+		}
+		
+		else {
+			
+			if (hitPoints <0)
+				System.out.println("Hitpoint amount must be positive.");
+			
+			else if (hitPoints >0) {
+				
+				this.hitPoints -= hitPoints;
+				
+				if (this.hitPoints < 0)
+					this.hitPoints = 0;
+				
+				System.out.println(getName() + " was hit for <" + hitPoints + "> points of damage.");
+				System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
+				System.out.println();
+				
+			}
 
-This method calls: Math.random()
-This method is called by: subtractHitPoints()
----------------------------------------------------------*/
-  public boolean defend()
-  {
+			if (this.hitPoints == 0)
+				System.out.println(name + " has been killed :-(");
+			
+		}
+
+	}
+	
+	public void addHitPoints(int hitPoints) {
+		if (hitPoints <=0)
+			System.out.println("Hitpoint amount must be positive.");
+		
+		else {
+			this.hitPoints += hitPoints;
+		}
+	}
+	
+	//--------------------------------------------
+	//End interface methods
+	
+	//Heros have a chance to block each round
+	public boolean defend() {
+			
 		return Math.random() <= chanceToBlock;
 
-  }//end defend method
+	}
+		
+	public void attack(Monster opponent) {
+		
+		boolean canAttack;
+		int damage;
 
-/*-------------------------------------------------------
-subtractHitPoints checks to see if hero blocked attack, if so a message
-is displayed, otherwise base version of this method is invoked to
-perform the subtraction operation.  This method overrides the method
-inherited from DungeonCharacter promoting polymorphic behavior
+		canAttack = Math.random() <= chanceToHit;
 
-Receives: hit points to subtract
-Returns: nothing
-
-This method calls: defend() or base version of method
-This method is called by: attack() from base class
----------------------------------------------------------*/
-public void subtractHitPoints(int hitPoints)
-	{
-		if (defend())
-		{
-			System.out.println(name + " BLOCKED the attack!");
+		if (canAttack) {
+			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
+			opponent.subtractHitPoints(damage);
+			System.out.println();
 		}
-		else
-		{
-			super.subtractHitPoints(hitPoints);
+		
+		else {
+			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
+			System.out.println();
 		}
 
+	}
+	
+	//Return the special attack name
+	public String specialAttack() {
+		return specialAttack;
+	}
+	
+	//Empty method for special attack is overridden in subclasses
+	public void specialAttack(Monster opponent) {}
+	
+	//Battle options for the hero character
+	public void battleChoices(Monster opponent) {
+		int choice;
 
-	}//end method
+		do {
+		    System.out.println("1. Attack Opponent");
+		    System.out.println("2. " + specialAttack());
+		    System.out.print("Choose an option: ");
+		    choice = Keyboard.readInt();
 
-/*-------------------------------------------------------
-battleChoices will be overridden in derived classes.  It computes the
-number of turns a hero will get per round based on the opponent that is
-being fought.  The number of turns is reported to the user.  This stuff might
-go better in another method that is invoked from this one...
+		    switch (choice)
+		    {
+			    case 1: attack(opponent);
+			        break;
+			    case 2: specialAttack(opponent);
+			        break;
+			    default:
+			        System.out.println("invalid choice!");
+		    }
 
-Receives: opponent
-Returns: nothing
+			numTurns--;
+			if (numTurns > 0)
+			    System.out.println("Number of turns remaining is: " + numTurns);
 
-This method calls: getAttackSpeed()
-This method is called by: external sources
----------------------------------------------------------*/
-	public void battleChoices(DungeonCharacter opponent)
-	{
-	    numTurns = attackSpeed/opponent.getAttackSpeed();
+		} while(numTurns > 0);
 
-		if (numTurns == 0)
-			numTurns++;
+    }
 
-		System.out.println("Number of turns this round is: " + numTurns);
-
-	}//end battleChoices
-
-}//end Hero class
+}
