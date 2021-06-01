@@ -8,7 +8,7 @@ public class HeroFactory
 	 * @param num 1: Warrior, 2: Sorceress, 3: Thief. Thief is used if an invalid number is given
 	 * @return the created hero
 	 */
-	public DungeonCharacter makeHero(int num)
+	public static DungeonCharacter makeHero(int num)
 	{
 		switch(num)
 		{

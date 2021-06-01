@@ -30,7 +30,7 @@ public class Thief extends Hero
 	 * Thief specific attack (sneak attack). This overrides the special attack from Hero
 	 */
 	@Override
-	public void specialAttack(Monster opponent)
+	public void specialAttack(DungeonCharacter opponent)
 	{
 		double surprise = Math.random();
 		if (surprise <= 0.4) {

@@ -104,7 +104,7 @@ public class Hero implements DungeonCharacter
 		return Math.random() <= chanceToBlock;
 	}
 		
-	public void attack(Monster opponent)
+	public void attack(DungeonCharacter opponent)
 	{
 		boolean canAttack;
 		int damage;
@@ -130,12 +130,12 @@ public class Hero implements DungeonCharacter
 	}
 	
 	// class-exclusive attack.
-	public void specialAttack(Monster opponent) {}
+	public void specialAttack(DungeonCharacter opponent) {}
 	
 	/**
 	 * Battle options for the hero character
 	 */
-	public void battleChoices(Monster opponent)
+	public void battleChoices(DungeonCharacter opponent)
 	{
 		int choice;
 

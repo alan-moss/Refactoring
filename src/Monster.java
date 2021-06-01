@@ -111,7 +111,7 @@ public class Monster implements DungeonCharacter
 	/**
 	 * Attempts to attack the given opponent based on random chance
 	 */
-	public void attack(Hero opponent)
+	public void attack(DungeonCharacter opponent)
 	{
 		boolean canAttack;
 		int damage;
@@ -127,4 +127,6 @@ public class Monster implements DungeonCharacter
 			System.out.println();
 		}
 	}
+
+	public void battleChoices(DungeonCharacter opponent) {}
 }

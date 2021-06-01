@@ -29,7 +29,7 @@ public class Sorceress extends Hero {
 	}
 	
 	@Override
-	public void attack(Monster opponent)
+	public void attack(DungeonCharacter opponent)
 	{
 		System.out.println(name + " casts a spell of fireball at " + opponent.getName() + ":");
 		super.attack(opponent);
@@ -39,7 +39,7 @@ public class Sorceress extends Hero {
 	 * Sorceress exclusive "attack" (heal). This overrides the special attack from Hero
 	 */
 	@Override
-	public void specialAttack(Monster opponent) {
+	public void specialAttack(DungeonCharacter opponent) {
 		int addedHP;
 
 		addedHP = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;

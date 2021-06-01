@@ -29,7 +29,7 @@ public class Warrior extends Hero {
 	 * Warrior specific attack (crushing blow). This overrides the special attack from Hero.
 	 */
 	@Override
-	public void specialAttack(Monster opponent)
+	public void specialAttack(DungeonCharacter opponent)
 	{
 		if (Math.random() <= .4) {
 			int blowPoints = (int)(Math.random() * 76) + 100;
@@ -42,7 +42,7 @@ public class Warrior extends Hero {
 	}
 	
 	@Override
-	public void attack(Monster opponent)
+	public void attack(DungeonCharacter opponent)
 	{
 		System.out.println(name + " swings a mighty sword at " +opponent.getName() + ":");
 		super.attack(opponent);

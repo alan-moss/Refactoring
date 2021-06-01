@@ -13,13 +13,13 @@ public class Dungeon
 	public static void main(String[] args)
 	{
 
-		Hero theHero;
-		Monster theMonster;
+		DungeonCharacter theHero;
+		DungeonCharacter theMonster;
 
 		do
 		{
 			theHero = chooseHero();
-			theMonster = generateMonster();
+			theMonster = MonsterFactory.makeRandomMonster();
 			battle(theHero, theMonster);
 		} while (playAgain());
 
@@ -27,62 +27,21 @@ public class Dungeon
 
 	/**
 	 * Allows the user to select a hero, creates that hero, and returns it. It
-	 * utilizes a polymorphic reference (Hero) to accomplish this
-	 * @return the created hero
+	 * utilizes the Hero Factory to return selected hero.
 	 */
-	public static Hero chooseHero()
+	public static DungeonCharacter chooseHero()
 	{
-		char choice;
+		int choice;
 		// Hero theHero;
 
 		System.out.println(
 			"Choose a hero:\n" +
 			"1. Warrior\n" +
 			"2. Sorceress\n" +
-			"3. Thief\n" +
-			"Or press q to quit");
-		choice = Keyboard.readChar();
-		switch(choice)
-		{
-			case '1': return new Warrior();
-
-			case '2': return new Sorceress();
-
-			case '3': return new Thief();
-			
-			case 'q':
-				System.out.println("Exiting");
-				System.exit(0);
-
-			default:
-				System.out.println("invalid choice, returning Thief");
-				return new Thief();
-		}//end switch
+			"3. Thief\n");
+		choice = Keyboard.readInt();
+		return HeroFactory.makeHero(choice);
 	}//end chooseHero method
-
-	/**
-	 * Randomly selects a Monster and returns it. It utilizes a polymorphic
-	 * reference (Monster) to accomplish this.
-	 * @return the monster
-	 */
-	public static Monster generateMonster()
-	{
-		int choice;
-
-		choice = (int)(Math.random() * 3) + 1;
-
-		switch(choice)
-		{
-			case 1: return new Ogre();
-
-			case 2: return new Gremlin();
-
-			case 3: return new Skeleton();
-
-			default: System.out.println("invalid choice, returning Skeleton");
-					 return new Skeleton();
-		}//end switch
-	}//end generateMonster method
 
 	/**
 	 * Asks the player if they want to play again
@@ -105,7 +64,7 @@ public class Dungeon
 	 * @param theHero the hero character, attacks first.
 	 * @param theMonster the monster character, attacks after the hero.
 	 */
-	public static void battle(Hero theHero, Monster theMonster)
+	public static void battle(DungeonCharacter theHero, DungeonCharacter theMonster)
 	{
 		char pause = 'p';
 		System.out.println(

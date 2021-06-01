@@ -11,7 +11,7 @@ public class MonsterFactory
 	 * @param num 1: Ogre, 2: Gremlin, 3: Skeleton. Skeleton is used if an invalid number is given
 	 * @return the created monster
 	 */
-	public DungeonCharacter makeMonster(int num)
+	public static DungeonCharacter makeMonster(int num)
 	{
 		switch(num)
 		{
@@ -26,7 +26,7 @@ public class MonsterFactory
 	 * Uses makeMonster to return a random Monster
 	 * @return an Ogre, a Gremlin, or a Skeleton
 	 */
-	public Monster makeRandomMonster()
+	public static Monster makeRandomMonster()
 	{
 		int num = (int)(Math.random() * 3) + 1;
 		return (Monster)makeMonster(num);
