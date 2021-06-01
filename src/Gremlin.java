@@ -20,7 +20,7 @@ public class Gremlin extends Monster{
 	}
 		    
 	@Override
-	public void attack(DungeonCharacter opponent) {
+	public void attack(Hero opponent) {
 				
 		System.out.println(name + " jabs his kris at " + opponent.getName() + ":");
 		super.attack(opponent);

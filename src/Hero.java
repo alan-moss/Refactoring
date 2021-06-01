@@ -110,7 +110,7 @@ public class Hero implements DungeonCharacter {
 
 	}
 		
-	public void attack(DungeonCharacter opponent) {
+	public void attack(Monster opponent) {
 		
 		boolean canAttack;
 		int damage;
@@ -136,10 +136,10 @@ public class Hero implements DungeonCharacter {
 	}
 	
 	//Empty method for special attack is overridden in subclasses
-	public void specialAttack(DungeonCharacter opponent) {}
+	public void specialAttack(Monster opponent) {}
 	
 	//Battle options for the hero character
-	public void battleChoices(DungeonCharacter opponent) {
+	public void battleChoices(Monster opponent) {
 		int choice;
 
 		do {

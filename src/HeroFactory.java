@@ -9,7 +9,7 @@ public class HeroFactory
     /*
     (classType, hitPoints, attackSpeed,chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack)
     */
-    public static DungeonCharacter makeHero(int num)
+    public DungeonCharacter makeHero(int num)
     {
         switch(num)
         {
@@ -19,7 +19,7 @@ public class HeroFactory
 
             //If invalid input, return thief
             default: System.out.println("invalid choice, returning Thief");
-            return new Hero("Thief", 75, 6, 0.8, 20, 40, 0.5, "Surprise Attack");
+            Hero("Thief", 75, 6, 0.8, 20, 40, 0.5, "Surprise Attack");
             
         }
     }
