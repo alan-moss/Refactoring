@@ -3,9 +3,44 @@
  */
 public class MonsterFactory 
 {
-	public static final int ogre = 1;
-	public static final int gremlin = 2;
-	public static final int skeleton = 3;
+
+	// Ogre constants
+	public static final int OGRE_ID = 1;
+	public static final String OGRE_CLASS_NAME = "Oscar the Ogre";
+	public static final int OGRE_HP = 200;
+	public static final int OGRE_ATTACK_SPEED = 2;
+	public static final double OGRE_HIT_CHANCE = 0.6;
+	public static final double OGRE_HEAL_CHANCE = 0.1;
+	public static final int OGRE_MIN_DAMAGE = 30;
+	public static final int OGRE_MAX_DAMAGE = 50;
+	public static final int OGRE_MIN_HEAL = 30;
+	public static final int OGRE_MAX_HEAL = 50;
+
+	// Gremlin constants
+	public static final int GREMLIN_ID = 2;
+	public static final String GREMLIN_CLASS_NAME = "Gnarltooth the Gremlin";
+	public static final int GREMLIN_HP = 70;
+	public static final int GREMLIN_ATTACK_SPEED = 5;
+	public static final double GREMLIN_HIT_CHANCE = 0.8;
+	public static final double GREMLIN_HEAL_CHANCE = 0.4;
+	public static final int GREMLIN_MIN_DAMAGE = 15;
+	public static final int GREMLIN_MAX_DAMAGE = 30;
+	public static final int GREMLIN_MIN_HEAL = 20;
+	public static final int GREMLIN_MAX_HEAL = 40;
+
+	// Skeleton constants
+	public static final int SKELETON_ID = 3;
+	public static final String SKELETON_CLASS_NAME = "Sargath the Skeleton";
+	public static final int SKELETON_HP = 100;
+	public static final int SKELETON_ATTACK_SPEED = 3;
+	public static final double SKELETON_HIT_CHANCE = 0.8;
+	public static final double SKELETON_HEAL_CHANCE = 0.3;
+	public static final int SKELETON_MIN_DAMAGE = 30;
+	public static final int SKELETON_MAX_DAMAGE = 50;
+	public static final int SKELETON_MIN_HEAL = 30;
+	public static final int SKELETON_MAX_HEAL = 50;
+
+
 	/**
 	 * Creates a monster based on the given number
 	 * @param num 1: Ogre, 2: Gremlin, 3: Skeleton. Skeleton is used if an invalid number is given
@@ -15,10 +50,49 @@ public class MonsterFactory
 	{
 		switch(num)
 		{
-			case MonsterFactory.ogre: return new Monster("Oscar the Ogre", 200, 2, 0.6, 0.1, 30, 50, 30, 50);
-			case MonsterFactory.gremlin: return new Monster("Gnarltooth the Gremlin", 70, 5, 0.8, 0.4, 15, 30, 20, 40);
-			case MonsterFactory.skeleton: return new Monster("Sargath the Skeleton", 100, 3, 0.8, 0.3, 30, 50, 30, 50);
-			default: return new Monster("Sargath the Skeleton", 100, 3, 0.8, 0.3, 30, 50, 30, 50);
+			case OGRE_ID: return new Monster(
+				OGRE_CLASS_NAME,
+				OGRE_HP,
+				OGRE_ATTACK_SPEED,
+				OGRE_HIT_CHANCE,
+				OGRE_HEAL_CHANCE,
+				OGRE_MIN_DAMAGE,
+				OGRE_MAX_DAMAGE,
+				OGRE_MIN_HEAL,
+				OGRE_MAX_HEAL);
+
+			case GREMLIN_ID: return new Monster(
+				GREMLIN_CLASS_NAME,
+				GREMLIN_HP,
+				GREMLIN_ATTACK_SPEED,
+				GREMLIN_HIT_CHANCE,
+				GREMLIN_HEAL_CHANCE,
+				GREMLIN_MIN_DAMAGE,
+				GREMLIN_MAX_DAMAGE,
+				GREMLIN_MIN_HEAL,
+				GREMLIN_MAX_HEAL);
+
+			case SKELETON_ID: return new Monster(
+				SKELETON_CLASS_NAME,
+				SKELETON_HP,
+				OGRE_ATTACK_SPEED,
+				SKELETON_HIT_CHANCE,
+				SKELETON_HEAL_CHANCE,
+				SKELETON_MIN_DAMAGE,
+				OGRE_MAX_DAMAGE,
+				SKELETON_MIN_HEAL,
+				SKELETON_MAX_HEAL);
+
+			default: return new Monster(
+				SKELETON_CLASS_NAME,
+				SKELETON_HP,
+				OGRE_ATTACK_SPEED,
+				SKELETON_HIT_CHANCE,
+				SKELETON_HEAL_CHANCE,
+				SKELETON_MIN_DAMAGE,
+				OGRE_MAX_DAMAGE,
+				SKELETON_MIN_HEAL,
+				SKELETON_MAX_HEAL);
 		}
 	}
 
