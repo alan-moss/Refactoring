@@ -18,12 +18,10 @@ public class Ogre extends Monster {
 		super(name, hitPoints, attackSpeed, chanceToHit, chanceToHeal, damageMin, damageMax, minHeal, maxHeal);
 
 	}
-	    
+
 	@Override
 	public void attack(Hero opponent) {
-			
 		System.out.println(name + " slowly swings a club toward's " + opponent.getName() + ":");
 		super.attack(opponent);
-
 	}
 }

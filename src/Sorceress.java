@@ -19,7 +19,7 @@ public class Sorceress extends Hero {
 	{
 		super(classType, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack);
 
-    }
+	}
 	
 	//Return the special attack name
 	public String specialAttack() {

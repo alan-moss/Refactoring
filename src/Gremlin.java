@@ -18,12 +18,10 @@ public class Gremlin extends Monster{
 		super(name, hitPoints, attackSpeed, chanceToHit, chanceToHeal, damageMin, damageMax, minHeal, maxHeal);
 
 	}
-		    
+
 	@Override
 	public void attack(Hero opponent) {
-				
 		System.out.println(name + " jabs his kris at " + opponent.getName() + ":");
 		super.attack(opponent);
-
 	}
 }

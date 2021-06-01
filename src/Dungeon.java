@@ -45,7 +45,7 @@
 */
 public class Dungeon
 {
-    public static void main(String[] args)
+	public static void main(String[] args)
 	{
 
 		Hero theHero;
@@ -53,13 +53,13 @@ public class Dungeon
 
 		do
 		{
-		    theHero = chooseHero();
-		    theMonster = generateMonster();
+			theHero = chooseHero();
+			theMonster = generateMonster();
 			battle(theHero, theMonster);
 
 		} while (playAgain());
 
-    }//end main method
+	}//end main method
 
 /*-------------------------------------------------------------------
 chooseHero allows the user to select a hero, creates that hero, and
@@ -71,10 +71,11 @@ this task
 		int choice;
 		// Hero theHero;
 
-		System.out.println("Choose a hero:\n" +
-					       "1. Warrior\n" +
-						   "2. Sorceress\n" +
-						   "3. Thief");
+		System.out.println(
+			"Choose a hero:\n" +
+			"1. Warrior\n" +
+			"2. Sorceress\n" +
+			"3. Thief");
 		choice = Keyboard.readInt();
 
 		switch(choice)
@@ -86,7 +87,7 @@ this task
 			case 3: return new Thief();
 
 			default: System.out.println("invalid choice, returning Thief");
-				     return new Thief();
+					 return new Thief();
 		}//end switch
 	}//end chooseHero method
 
@@ -109,7 +110,7 @@ a polymorphic reference (Monster) to accomplish this task.
 			case 3: return new Skeleton();
 
 			default: System.out.println("invalid choice, returning Skeleton");
-				     return new Skeleton();
+					 return new Skeleton();
 		}//end switch
 	}//end generateMonster method
 
@@ -144,12 +145,12 @@ user has the option of quitting.
 		//do battle
 		while (theHero.isAlive() && theMonster.isAlive() && pause != 'q')
 		{
-		    //hero goes first
+			//hero goes first
 			theHero.battleChoices(theMonster);
 
 			//monster's turn (provided it's still alive!)
 			if (theMonster.isAlive())
-			    theMonster.attack(theHero);
+				theMonster.attack(theHero);
 
 			//let the player bail out if desired
 			System.out.print("\n-->q to quit, anything else to continue: ");
@@ -158,7 +159,7 @@ user has the option of quitting.
 		}//end battle loop
 
 		if (!theMonster.isAlive())
-		    System.out.println(theHero.getName() + " was victorious!");
+			System.out.println(theHero.getName() + " was victorious!");
 		else if (!theHero.isAlive())
 			System.out.println(theHero.getName() + " was defeated :-(");
 		else//both are alive so user quit the game

@@ -17,7 +17,7 @@ public class Thief extends Hero {
 	{
 		super(classType, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack);
 
-    }
+	}
 	
 	//Return the special attack name
 	public String specialAttack() {
@@ -40,8 +40,6 @@ public class Thief extends Hero {
 			System.out.println("Uh oh! " + opponent.getName() + " saw you and" + " blocked your attack!");
 		}
 		else
-		    attack(opponent);
-
+			attack(opponent);
 	}
-
 }

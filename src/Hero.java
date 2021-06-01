@@ -55,7 +55,7 @@ public class Hero implements DungeonCharacter {
 	}
 	
 	public boolean isAlive() {
-	  return (this.hitPoints > 0);
+		return (this.hitPoints > 0);
 	}
 	
 	public void subtractHitPoints(int hitPoints) {
@@ -143,27 +143,24 @@ public class Hero implements DungeonCharacter {
 		int choice;
 
 		do {
-		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. " + specialAttack());
-		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
+			System.out.println("1. Attack Opponent");
+			System.out.println("2. " + specialAttack());
+			System.out.print("Choose an option: ");
+			choice = Keyboard.readInt();
 
-		    switch (choice)
-		    {
-			    case 1: attack(opponent);
-			        break;
-			    case 2: specialAttack(opponent);
-			        break;
-			    default:
-			        System.out.println("invalid choice!");
-		    }
+			switch (choice)
+			{
+				case 1: attack(opponent);
+					break;
+				case 2: specialAttack(opponent);
+					break;
+				default:
+					System.out.println("invalid choice!");
+			}
 
 			numTurns--;
 			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
-
+				System.out.println("Number of turns remaining is: " + numTurns);
 		} while(numTurns > 0);
-
-    }
-
+	}
 }

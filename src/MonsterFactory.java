@@ -6,21 +6,21 @@ Note: Defaults to return Skeleton if given invalid input. Includes random genera
 */
 public class MonsterFactory 
 {
-    public DungeonCharacter makeMonster(int num)
-    {
-        switch(num)
-        {
-            case 1: return new Monster("Oscar the Ogre", 200, 2, 0.6, 0.1, 30, 50, 30, 50);
-            case 2: return new Monster("Gnarltooth the Gremlin", 70, 5, 0.8, 0.4, 15, 30, 20, 40);
-            case 3: return new Monster("Sargath the Skeleton", 100, 3, 0.8, 0.3, 30, 50, 30, 50);
-            default: return new Monster("Sargath the Skeleton", 100, 3, 0.8, 0.3, 30, 50, 30, 50);
-        }
-    }
+	public DungeonCharacter makeMonster(int num)
+	{
+		switch(num)
+		{
+			case 1: return new Monster("Oscar the Ogre", 200, 2, 0.6, 0.1, 30, 50, 30, 50);
+			case 2: return new Monster("Gnarltooth the Gremlin", 70, 5, 0.8, 0.4, 15, 30, 20, 40);
+			case 3: return new Monster("Sargath the Skeleton", 100, 3, 0.8, 0.3, 30, 50, 30, 50);
+			default: return new Monster("Sargath the Skeleton", 100, 3, 0.8, 0.3, 30, 50, 30, 50);
+		}
+	}
 
-    //Method returns Monster using MonsterFactory
-    public Monster makeRandomMonster()
-    {
-        int num = (int)(Math.random() * 3) + 1;
-        return (Monster)makeMonster(num);
-    }
+	//Method returns Monster using MonsterFactory
+	public Monster makeRandomMonster()
+	{
+		int num = (int)(Math.random() * 3) + 1;
+		return (Monster)makeMonster(num);
+	}
 }
