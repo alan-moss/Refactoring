@@ -7,6 +7,18 @@ public class Monster implements DungeonCharacter
 	protected int damageMin, damageMax;
 	protected int minHeal, maxHeal;
 
+	/**
+	 * Creates the monster with the given attributes
+	 * @param name
+	 * @param hitPoints
+	 * @param attackSpeed
+	 * @param chanceToHit
+	 * @param chanceToHeal
+	 * @param damageMin
+	 * @param damageMax
+	 * @param minHeal
+	 * @param maxHeal
+	 */
 	public Monster( String name, int hitPoints, int attackSpeed,double chanceToHit, double chanceToHeal,
 		int damageMin, int damageMax,int minHeal, int maxHeal)
 	{
@@ -57,7 +69,7 @@ public class Monster implements DungeonCharacter
 
 	public void subtractHitPoints(int hitPoints)
 	{
-		heal(); 
+		heal();
 		
 		if (hitPoints <0)
 			System.out.println("Hitpoint amount must be positive.");
@@ -77,7 +89,9 @@ public class Monster implements DungeonCharacter
 	//--------------------------------------------
 	//End interface methods
 	
-	//Monsters have a chance to heal each round
+	/**
+	 * Monsters have a chance to heal each round
+	 */ 
 	public void heal()
 	{
 		
@@ -94,6 +108,9 @@ public class Monster implements DungeonCharacter
 		}
 	}
 	
+	/**
+	 * Attempts to attack the given opponent based on random chance
+	 */
 	public void attack(Hero opponent)
 	{
 		boolean canAttack;

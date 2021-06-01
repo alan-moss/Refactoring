@@ -1,7 +1,6 @@
 //Warrior subclass
 
 public class Warrior extends Hero {
-	
 	//Warrior data fields
 	protected static String classType = "Warrior";
 	protected static int hitPoints = 125;
@@ -18,12 +17,17 @@ public class Warrior extends Hero {
 		super(classType, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack);
 	}
 	
-	//Return the special attack name
+	/**
+	 * Return the special attack name
+	 */
 	public String specialAttack()
 	{
 		return specialAttack;
 	}
 	
+	/**
+	 * Warrior specific attack (crushing blow). This overrides the special attack from Hero.
+	 */
 	@Override
 	public void specialAttack(Monster opponent)
 	{

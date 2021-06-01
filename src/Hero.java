@@ -1,5 +1,6 @@
-//Hero superclass for Warrior, Thief, and Sorceress
-
+/**
+ * Hero superclass for Warrior, Thief, and Sorceress
+ */
 public class Hero implements DungeonCharacter
 {
 	//Hero data fields
@@ -29,7 +30,9 @@ public class Hero implements DungeonCharacter
 		
 	}
 	
-	//Get the characters name from the user
+	/**
+	 * Get the character's name from the user
+	 */
 	public String readName()
 	{
 		System.out.print("Enter character name: ");
@@ -93,10 +96,9 @@ public class Hero implements DungeonCharacter
 			this.hitPoints += hitPoints;
 	}
 	
-	//--------------------------------------------
-	//End interface methods
-	
-	//Heros have a chance to block each round
+	/**
+	 * Heroes have a chance to block each round
+	 */
 	public boolean defend()
 	{
 		return Math.random() <= chanceToBlock;
@@ -119,16 +121,20 @@ public class Hero implements DungeonCharacter
 		}
 	}
 	
-	//Return the special attack name
+	/**
+	 * Return the special attack name
+	 */
 	public String specialAttack()
 	{
 		return specialAttack;
 	}
 	
-	//Empty method for special attack is overridden in subclasses
+	// class-exclusive attack.
 	public void specialAttack(Monster opponent) {}
 	
-	//Battle options for the hero character
+	/**
+	 * Battle options for the hero character
+	 */
 	public void battleChoices(Monster opponent)
 	{
 		int choice;

@@ -1,14 +1,13 @@
-/*
-Hero Factory creates a hero with given attributes
-Args: integer number between 1-3
-Returns: DungeonCharacter with attributes of warrior, sorceress, or thief
-Note: Defaults to return Thief if given invalid input
-*/
+/**
+ * MonsterFactory is used for creating monsters
+ */
 public class HeroFactory 
 {
-	/*
-	(classType, hitPoints, attackSpeed,chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack)
-	*/
+	/**
+	 * Creates a hero based on the given number
+	 * @param num 1: Warrior, 2: Sorceress, 3: Thief. Thief is used if an invalid number is given
+	 * @return the created hero
+	 */
 	public DungeonCharacter makeHero(int num)
 	{
 		switch(num)

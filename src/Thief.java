@@ -17,15 +17,19 @@ public class Thief extends Hero
 	{
 		super(classType, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax, chanceToBlock, specialAttack);
 	}
-	
-	//Return the special attack name
+
+	/**
+	 * Returns the special attack name
+	 */
 	public String specialAttack()
 	{
 		return specialAttack;
 	}
 	
+	/**
+	 * Thief specific attack (sneak attack). This overrides the special attack from Hero
+	 */
 	@Override
-	//Thief specific attack, Surprise Attack. This overrides the special attack from the super class
 	public void specialAttack(Monster opponent)
 	{
 		double surprise = Math.random();

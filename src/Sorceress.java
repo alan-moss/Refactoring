@@ -21,7 +21,9 @@ public class Sorceress extends Hero {
 
 	}
 	
-	//Return the special attack name
+	/**
+	 * Returns the special attack name
+	 */
 	public String specialAttack() {
 		return specialAttack;
 	}
@@ -33,8 +35,10 @@ public class Sorceress extends Hero {
 		super.attack(opponent);
 	}
 	
+	/**
+	 * Sorceress exclusive "attack" (heal). This overrides the special attack from Hero
+	 */
 	@Override
-	//Thief specific attack, Surprise Attack. This overrides the special attack from the super class
 	public void specialAttack(Monster opponent) {
 		int addedHP;
 
