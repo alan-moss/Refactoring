@@ -1,5 +1,5 @@
-public interface DungeonCharacter {
-	
+public interface DungeonCharacter
+{
 	public String getName();
 
 	public int getHitPoints();

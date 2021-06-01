@@ -13,18 +13,15 @@ public class Skeleton extends Monster {
 	protected static int minHeal = 30;
 	protected static int maxHeal = 50;
 
-    public Skeleton()
+	public Skeleton()
 	{
 		super(name, hitPoints, attackSpeed, chanceToHit, chanceToHeal, damageMin, damageMax, minHeal, maxHeal);
+	}
 
-    }
-    
-    @Override
+	@Override
 	public void attack(Hero opponent)
 	{
-		System.out.println(name + " slices his rusty blade at " +
-							opponent.getName() + ":");
+		System.out.println(name + " slices his rusty blade at " + opponent.getName() + ":");
 		super.attack(opponent);
-
 	}
 }

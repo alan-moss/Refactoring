@@ -1,14 +1,27 @@
 //The Monster superclass for Gremlin, Ogre, and Skeleton
-public class Monster implements DungeonCharacter {
-	
+public class Monster implements DungeonCharacter
+{
 	protected String name;
 	protected int hitPoints, attackSpeed;
 	protected double chanceToHit, chanceToHeal;
 	protected int damageMin, damageMax;
 	protected int minHeal, maxHeal;
 
-	public Monster(String name, int hitPoints, int attackSpeed,double chanceToHit, double chanceToHeal,
-			int damageMin, int damageMax,int minHeal, int maxHeal) {
+	/**
+	 * Creates the monster with the given attributes
+	 * @param name
+	 * @param hitPoints
+	 * @param attackSpeed
+	 * @param chanceToHit
+	 * @param chanceToHeal
+	 * @param damageMin
+	 * @param damageMax
+	 * @param minHeal
+	 * @param maxHeal
+	 */
+	public Monster( String name, int hitPoints, int attackSpeed,double chanceToHit, double chanceToHeal,
+		int damageMin, int damageMax,int minHeal, int maxHeal)
+	{
 		
 		this.name = name;
 		this.hitPoints = hitPoints;
@@ -19,29 +32,32 @@ public class Monster implements DungeonCharacter {
 		this.damageMax = damageMax;
 		this.maxHeal = maxHeal;
 		this.minHeal = minHeal;
-
 	}
 	
 	//Implement DungeonCharacter interface methods
 	//--------------------------------------------
-	public String getName() {
+	public String getName()
+	{
 		return this.name;
 	}
 
-	public int getHitPoints() {
+	public int getHitPoints()
+	{
 		return this.hitPoints;
 	}
 
-	public int getAttackSpeed() {
+	public int getAttackSpeed()
+	{
 		return this.attackSpeed;
 	}
 
-	public boolean isAlive() {
+	public boolean isAlive()
+	{
 		return (this.hitPoints > 0);
 	}
 	
-	public void addHitPoints(int hitPoints) {
-		
+	public void addHitPoints(int hitPoints)
+	{
 		if (hitPoints <=0)
 			System.out.println("Hitpoint amount must be positive.");
 		
@@ -51,9 +67,9 @@ public class Monster implements DungeonCharacter {
 		}
 	}
 
-	public void subtractHitPoints(int hitPoints) {
-		
-		heal(); 
+	public void subtractHitPoints(int hitPoints)
+	{
+		heal();
 		
 		if (hitPoints <0)
 			System.out.println("Hitpoint amount must be positive.");
@@ -69,13 +85,15 @@ public class Monster implements DungeonCharacter {
 
 		if (this.hitPoints == 0)
 			System.out.println(name + " has been killed :-(");
-
 	}
 	//--------------------------------------------
 	//End interface methods
 	
-	//Monsters have a chance to heal each round
-	public void heal() {
+	/**
+	 * Monsters have a chance to heal each round
+	 */ 
+	public void heal()
+	{
 		
 		boolean canHeal;
 		int healPoints;
@@ -88,11 +106,13 @@ public class Monster implements DungeonCharacter {
 			System.out.println(name + " healed itself for " + healPoints + " points.\n" + "Total hit points remaining are: " + hitPoints);
 			System.out.println();
 		}
-
 	}
 	
-	public void attack(Hero opponent) {
-		
+	/**
+	 * Attempts to attack the given opponent based on random chance
+	 */
+	public void attack(Hero opponent)
+	{
 		boolean canAttack;
 		int damage;
 	
@@ -102,13 +122,9 @@ public class Monster implements DungeonCharacter {
 			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
 			opponent.subtractHitPoints(damage);
 			System.out.println();
-		}
-		
-		else {
-	
+		} else {
 			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}
-	
 	}
 }

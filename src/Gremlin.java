@@ -1,7 +1,7 @@
 //Gremlin subclass
 
-public class Gremlin extends Monster{
-	
+public class Gremlin extends Monster
+{
 	//Gremlin data fields
 	protected static String name = "Gnarltooth the Gremlin";
 	protected static int hitPoints = 70;
@@ -13,17 +13,15 @@ public class Gremlin extends Monster{
 	protected static int minHeal = 20;
 	protected static int maxHeal = 40;
 
-	public Gremlin() {
-				
+	public Gremlin()
+	{
 		super(name, hitPoints, attackSpeed, chanceToHit, chanceToHeal, damageMin, damageMax, minHeal, maxHeal);
-
 	}
-		    
+
 	@Override
-	public void attack(Hero opponent) {
-				
+	public void attack(Hero opponent)
+	{
 		System.out.println(name + " jabs his kris at " + opponent.getName() + ":");
 		super.attack(opponent);
-
 	}
 }
