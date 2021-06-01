@@ -135,11 +135,14 @@ and a Monster to be passed in.  Battle occurs in rounds.  The Hero
 goes first, then the Monster.  At the conclusion of each round, the
 user has the option of quitting.
 ---------------------------------------------------------------------*/
+/**
+ * 
+ */
 	public static void battle(Hero theHero, Monster theMonster)
 	{
 		char pause = 'p';
-		System.out.println(theHero.getName() + " battles " +
-							theMonster.getName());
+		System.out.println(
+			theHero.getName() + " battles " + theMonster.getName());
 		System.out.println("---------------------------------------------");
 
 		//do battle
@@ -166,6 +169,4 @@ user has the option of quitting.
 			System.out.println("Quitters never win ;-)");
 
 	}//end battle method
-
-
 }//end Dungeon class

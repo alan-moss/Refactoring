@@ -36,15 +36,13 @@ public class Sorceress extends Hero {
 	@Override
 	//Thief specific attack, Surprise Attack. This overrides the special attack from the super class
 	public void specialAttack(Monster opponent) {
-		
-		int hPoints;
+		int addedHP;
 
-		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
-		addHitPoints(hPoints);
-		System.out.println(name + " added [" + hPoints + "] points.\n"
-							+ "Total hit points remaining are: "
-							+ hitPoints);
-		 System.out.println();
-
+		addedHP = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
+		addHitPoints(addedHP);
+		System.out.printf(
+			"%s added [%d] points.\n" +
+			"Total hit points remaining are: %d\n\n",
+			name, addedHP, hitPoints);
 	}
 }

@@ -1,7 +1,7 @@
 //Hero superclass for Warrior, Thief, and Sorceress
 
-public class Hero implements DungeonCharacter {
-	
+public class Hero implements DungeonCharacter
+{
 	//Hero data fields
 	protected String classType;
 	protected String name;
@@ -30,88 +30,80 @@ public class Hero implements DungeonCharacter {
 	}
 	
 	//Get the characters name from the user
-	public String readName() {
-		
+	public String readName()
+	{
 		System.out.print("Enter character name: ");
 		name = Keyboard.readString();
 		
 		return name;
-		
 	}
 	
 	//Implement DungeonCharacter interface methods
 	//--------------------------------------------
 	
-	public String getName() {
+	public String getName()
+	{
 		return this.name;
 	}
 
-	public int getHitPoints() {
+	public int getHitPoints()
+	{
 		return this.hitPoints;
 	}
 
-	public int getAttackSpeed() {
+	public int getAttackSpeed()
+	{
 		return this.attackSpeed;
 	}
 	
-	public boolean isAlive() {
+	public boolean isAlive()
+	{
 		return (this.hitPoints > 0);
 	}
 	
-	public void subtractHitPoints(int hitPoints) {
-		
+	public void subtractHitPoints(int hitPoints)
+	{
 		if (defend()) {
-			
 			System.out.println(getName() + " BLOCKED the attack!");
-			
-		}
-		
-		else {
-			
+		} else {
 			if (hitPoints <0)
 				System.out.println("Hitpoint amount must be positive.");
 			
 			else if (hitPoints >0) {
-				
 				this.hitPoints -= hitPoints;
-				
+
 				if (this.hitPoints < 0)
 					this.hitPoints = 0;
 				
 				System.out.println(getName() + " was hit for <" + hitPoints + "> points of damage.");
 				System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
 				System.out.println();
-				
 			}
 
 			if (this.hitPoints == 0)
 				System.out.println(name + " has been killed :-(");
-			
 		}
-
 	}
 	
-	public void addHitPoints(int hitPoints) {
+	public void addHitPoints(int hitPoints)
+	{
 		if (hitPoints <=0)
 			System.out.println("Hitpoint amount must be positive.");
-		
-		else {
+		else
 			this.hitPoints += hitPoints;
-		}
 	}
 	
 	//--------------------------------------------
 	//End interface methods
 	
 	//Heros have a chance to block each round
-	public boolean defend() {
-			
+	public boolean defend()
+	{
 		return Math.random() <= chanceToBlock;
-
 	}
 		
-	public void attack(Monster opponent) {
-		
+	public void attack(Monster opponent)
+	{
 		boolean canAttack;
 		int damage;
 
@@ -121,17 +113,15 @@ public class Hero implements DungeonCharacter {
 			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
 			opponent.subtractHitPoints(damage);
 			System.out.println();
-		}
-		
-		else {
+		} else {
 			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
 			System.out.println();
 		}
-
 	}
 	
 	//Return the special attack name
-	public String specialAttack() {
+	public String specialAttack()
+	{
 		return specialAttack;
 	}
 	
@@ -139,7 +129,8 @@ public class Hero implements DungeonCharacter {
 	public void specialAttack(Monster opponent) {}
 	
 	//Battle options for the hero character
-	public void battleChoices(Monster opponent) {
+	public void battleChoices(Monster opponent)
+	{
 		int choice;
 
 		do {

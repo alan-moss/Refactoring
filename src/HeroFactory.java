@@ -17,7 +17,6 @@ public class HeroFactory
 			case 2: return new Hero("Sorceress", 75, 5, 0.7, 25, 50, 0.3, "Increase Hit Points");
 			case 3: return new Hero("Thief", 75, 6, 0.8, 20, 40, 0.5, "Surprise Attack");
 
-			
 			//If invalid input, return thief
 			default: System.out.println("invalid choice, returning Thief");
 			return new Hero("Thief", 75, 6, 0.8, 20, 40, 0.5, "Surprise Attack");
