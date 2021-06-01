@@ -12,4 +12,8 @@ public interface DungeonCharacter {
 	
 	public void subtractHitPoints(int hitPoints);
 
+	public void attack(DungeonCharacter opponent);
+
+	public void battleChoices(DungeonCharacter opponent);
+
 }

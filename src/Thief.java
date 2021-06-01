@@ -26,7 +26,7 @@ public class Thief extends Hero {
 	
 	@Override
 	//Thief specific attack, Surprise Attack. This overrides the special attack from the super class
-	public void specialAttack(Monster opponent) {
+	public void specialAttack(DungeonCharacter opponent) {
 		
 		double surprise = Math.random();
 		if (surprise <= 0.4)

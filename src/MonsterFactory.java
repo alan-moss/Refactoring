@@ -6,7 +6,7 @@ Note: Defaults to return Skeleton if given invalid input. Includes random genera
 */
 public class MonsterFactory 
 {
-    public DungeonCharacter makeMonster(int num)
+    public static DungeonCharacter makeMonster(int num)
     {
         switch(num)
         {
@@ -18,7 +18,7 @@ public class MonsterFactory
     }
 
     //Method returns Monster using MonsterFactory
-    public Monster makeRandomMonster()
+    public static Monster makeRandomMonster()
     {
         int num = (int)(Math.random() * 3) + 1;
         return (Monster)makeMonster(num);

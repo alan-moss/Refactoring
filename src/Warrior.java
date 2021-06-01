@@ -25,7 +25,7 @@ public class Warrior extends Hero {
 	}
 	
 	@Override
-	public void specialAttack(Monster opponent) {
+	public void specialAttack(DungeonCharacter opponent) {
 		
 		if (Math.random() <= .4) {
 			
@@ -44,7 +44,7 @@ public class Warrior extends Hero {
 	}
 	
 	@Override
-	public void attack(Monster opponent) {
+	public void attack(DungeonCharacter opponent) {
 		
 		System.out.println(name + " swings a mighty sword at " +opponent.getName() + ":");
 		super.attack(opponent);

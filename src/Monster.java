@@ -91,7 +91,7 @@ public class Monster implements DungeonCharacter {
 
 	}
 	
-	public void attack(Hero opponent) {
+	public void attack(DungeonCharacter opponent) {
 		
 		boolean canAttack;
 		int damage;
@@ -111,4 +111,6 @@ public class Monster implements DungeonCharacter {
 		}
 	
 	}
+
+	public void battleChoices(DungeonCharacter opponent) {}
 }
