@@ -9,6 +9,7 @@ public class MonsterFactory
 	public static final String OGRE_CLASS_NAME = "Oscar the Ogre";
 	public static final int OGRE_HP = 200;
 	public static final int OGRE_ATTACK_SPEED = 2;
+	public static final String OGRE_ATTACK_STRING = "%s slowly swings a club toward's %s.\n";
 	public static final double OGRE_HIT_CHANCE = 0.6;
 	public static final double OGRE_HEAL_CHANCE = 0.1;
 	public static final int OGRE_MIN_DAMAGE = 30;
@@ -21,6 +22,7 @@ public class MonsterFactory
 	public static final String GREMLIN_CLASS_NAME = "Gnarltooth the Gremlin";
 	public static final int GREMLIN_HP = 70;
 	public static final int GREMLIN_ATTACK_SPEED = 5;
+	public static final String GREMLIN_ATTACK_STRING = "%s jabs his kris at %s.\n";
 	public static final double GREMLIN_HIT_CHANCE = 0.8;
 	public static final double GREMLIN_HEAL_CHANCE = 0.4;
 	public static final int GREMLIN_MIN_DAMAGE = 15;
@@ -33,6 +35,7 @@ public class MonsterFactory
 	public static final String SKELETON_CLASS_NAME = "Sargath the Skeleton";
 	public static final int SKELETON_HP = 100;
 	public static final int SKELETON_ATTACK_SPEED = 3;
+	public static final String SKELETON_ATTACK_STRING = "%s slices his rusty blade at %s.\n";
 	public static final double SKELETON_HIT_CHANCE = 0.8;
 	public static final double SKELETON_HEAL_CHANCE = 0.3;
 	public static final int SKELETON_MIN_DAMAGE = 30;
@@ -54,6 +57,7 @@ public class MonsterFactory
 				OGRE_CLASS_NAME,
 				OGRE_HP,
 				OGRE_ATTACK_SPEED,
+				OGRE_ATTACK_STRING,
 				OGRE_HIT_CHANCE,
 				OGRE_HEAL_CHANCE,
 				OGRE_MIN_DAMAGE,
@@ -65,6 +69,7 @@ public class MonsterFactory
 				GREMLIN_CLASS_NAME,
 				GREMLIN_HP,
 				GREMLIN_ATTACK_SPEED,
+				GREMLIN_ATTACK_STRING,
 				GREMLIN_HIT_CHANCE,
 				GREMLIN_HEAL_CHANCE,
 				GREMLIN_MIN_DAMAGE,
@@ -75,22 +80,24 @@ public class MonsterFactory
 			case SKELETON_ID: return new Monster(
 				SKELETON_CLASS_NAME,
 				SKELETON_HP,
-				OGRE_ATTACK_SPEED,
+				SKELETON_ATTACK_SPEED,
+				SKELETON_ATTACK_STRING,
 				SKELETON_HIT_CHANCE,
 				SKELETON_HEAL_CHANCE,
 				SKELETON_MIN_DAMAGE,
-				OGRE_MAX_DAMAGE,
+				SKELETON_MAX_DAMAGE,
 				SKELETON_MIN_HEAL,
 				SKELETON_MAX_HEAL);
 
 			default: return new Monster(
 				SKELETON_CLASS_NAME,
 				SKELETON_HP,
-				OGRE_ATTACK_SPEED,
+				SKELETON_ATTACK_SPEED,
+				SKELETON_ATTACK_STRING,
 				SKELETON_HIT_CHANCE,
 				SKELETON_HEAL_CHANCE,
 				SKELETON_MIN_DAMAGE,
-				OGRE_MAX_DAMAGE,
+				SKELETON_MAX_DAMAGE,
 				SKELETON_MIN_HEAL,
 				SKELETON_MAX_HEAL);
 		}

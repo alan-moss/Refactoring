@@ -6,6 +6,7 @@ public class Monster implements DungeonCharacter
 	protected double chanceToHit, chanceToHeal;
 	protected int damageMin, damageMax;
 	protected int minHeal, maxHeal;
+	protected String attackString;
 
 	/**
 	 * Creates the monster with the given attributes
@@ -19,13 +20,13 @@ public class Monster implements DungeonCharacter
 	 * @param minHeal
 	 * @param maxHeal
 	 */
-	public Monster( String name, int hitPoints, int attackSpeed,double chanceToHit, double chanceToHeal,
+	public Monster( String name, int hitPoints, int attackSpeed, String attackString, double chanceToHit, double chanceToHeal,
 		int damageMin, int damageMax,int minHeal, int maxHeal)
 	{
-		
 		this.name = name;
 		this.hitPoints = hitPoints;
 		this.attackSpeed = attackSpeed;
+		this.attackString = attackString;
 		this.chanceToHit = chanceToHit;
 		this.chanceToHeal = chanceToHeal;
 		this.damageMin = damageMin;
@@ -78,9 +79,7 @@ public class Monster implements DungeonCharacter
 			this.hitPoints -= hitPoints;
 			if (this.hitPoints < 0)
 				this.hitPoints = 0;
-			System.out.println(getName() + " was hit for <" + hitPoints + "> points of damage.");
-			System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
-			System.out.println();
+			System.out.printf("%s was hit for %d points of damage (%d HP remaining).\n", getName(), hitPoints, getHitPoints());
 		}
 
 		if (this.hitPoints == 0)
@@ -117,7 +116,8 @@ public class Monster implements DungeonCharacter
 		int damage;
 	
 		canAttack = Math.random() <= chanceToHit;
-	
+		System.out.printf(attackString, name, opponent.getName());
+		
 		if (canAttack) {
 			damage = (int)(Math.random() * (damageMax - damageMin + 1)) + damageMin ;
 			opponent.subtractHitPoints(damage);
