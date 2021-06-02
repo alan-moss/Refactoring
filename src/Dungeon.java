@@ -12,7 +12,6 @@ public class Dungeon
 {
 	public static void main(String[] args)
 	{
-
 		DungeonCharacter theHero;
 		DungeonCharacter theMonster;
 
@@ -82,7 +81,7 @@ public class Dungeon
 				theMonster.attack(theHero);
 
 			//let the player bail out if desired
-			System.out.print("\n-->q to quit, anything else to continue: ");
+			System.out.print("-->q to quit, anything else to continue: ");
 			pause = Keyboard.readChar();
 
 		}//end battle loop

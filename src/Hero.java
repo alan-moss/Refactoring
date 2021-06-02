@@ -6,17 +6,21 @@ public class Hero implements DungeonCharacter
 	//Hero data fields
 	protected String classType;
 	protected String name;
-	protected String specialAttack;
 	protected int hitPoints;
 	protected int attackSpeed;
+	protected String attackString;
 	protected double chanceToHit;
 	protected int damageMin, damageMax;
 	protected double chanceToBlock;
+	protected SpecialAttack special;
 	protected int numTurns;
+	public final int MIN_ADD = 25;
+	public final int MAX_ADD = 50;
+
 	
 	//Hero Constructor
-	public Hero(String classType, int hitPoints, int attackSpeed, double chanceToHit, int damageMin, int damageMax,
-			double chanceToBlock, String specialAttack) {
+	public Hero(String classType, int hitPoints, int attackSpeed, String attackString, double chanceToHit, int damageMin, int damageMax,
+			double chanceToBlock, SpecialAttack special) {
 
 		this.name = readName();
 		this.classType = classType;
@@ -26,8 +30,7 @@ public class Hero implements DungeonCharacter
 		this.damageMin = damageMin;
 		this.damageMax = damageMax;
 		this.chanceToBlock = chanceToBlock;
-		this.specialAttack = specialAttack;
-		
+		this.special = special;
 	}
 	
 	/**
@@ -42,7 +45,6 @@ public class Hero implements DungeonCharacter
 	}
 	
 	//Implement DungeonCharacter interface methods
-	//--------------------------------------------
 	
 	public String getName()
 	{
@@ -63,6 +65,15 @@ public class Hero implements DungeonCharacter
 	{
 		return (this.hitPoints > 0);
 	}
+
+	public int numTurnsIncrement() {
+		return ++this.numTurns;
+	}
+
+	public int numTurnsDecrement()
+	{
+		return --this.numTurns;
+	}
 	
 	public void subtractHitPoints(int hitPoints)
 	{
@@ -78,9 +89,7 @@ public class Hero implements DungeonCharacter
 				if (this.hitPoints < 0)
 					this.hitPoints = 0;
 				
-				System.out.println(getName() + " was hit for <" + hitPoints + "> points of damage.");
-				System.out.println(getName() + " now has " + getHitPoints() + " hit points remaining.");
-				System.out.println();
+				System.out.printf("%s was hit for %d points of damage (%d HP remaining)\n", getName(), hitPoints, getHitPoints());
 			}
 
 			if (this.hitPoints == 0)
@@ -124,14 +133,25 @@ public class Hero implements DungeonCharacter
 	/**
 	 * Return the special attack name
 	 */
-	public String specialAttack()
+	public SpecialAttack specialAttack()
 	{
-		return specialAttack;
+		return special;
 	}
 	
 	// class-exclusive attack.
-	public void specialAttack(DungeonCharacter opponent) {}
-	
+	public void specialAttack(DungeonCharacter opponent) {
+		this.special.doAttack(this, opponent);
+	}
+
+	public void heal()
+	{
+		int addedHP;
+
+		addedHP = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
+		addHitPoints(addedHP);
+		System.out.printf("%s added %d HP. Total hit points remaining are: %d\n\n", name, addedHP, hitPoints);
+	}
+
 	/**
 	 * Battle options for the hero character
 	 */
@@ -141,7 +161,7 @@ public class Hero implements DungeonCharacter
 
 		do {
 			System.out.println("1. Attack Opponent");
-			System.out.println("2. " + specialAttack());
+			System.out.printf("2. Special (%s)\n", special.getAttackName());
 			System.out.print("Choose an option: ");
 			choice = Keyboard.readInt();
 

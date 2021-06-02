@@ -36,7 +36,6 @@ public class Monster implements DungeonCharacter
 	}
 	
 	//Implement DungeonCharacter interface methods
-	//--------------------------------------------
 	public String getName()
 	{
 		return this.name;
@@ -85,7 +84,6 @@ public class Monster implements DungeonCharacter
 		if (this.hitPoints == 0)
 			System.out.println(name + " has been killed :-(");
 	}
-	//--------------------------------------------
 	//End interface methods
 	
 	/**
@@ -123,8 +121,7 @@ public class Monster implements DungeonCharacter
 			opponent.subtractHitPoints(damage);
 			System.out.println();
 		} else {
-			System.out.println(getName() + "'s attack on " + opponent.getName() + " failed!");
-			System.out.println();
+			System.out.printf("%s's attack on %s failed!\n\n", name, opponent.getName());
 		}
 	}
 
