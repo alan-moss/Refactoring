@@ -6,7 +6,7 @@
  * Once a battle concludes, the user has the option of repeating the above.
  * 
  * <p>Based on the original Heroes and Monsters project by I.M. Knurdy and Code Dogs Inc created in 2001.</p>
- * @authors Alan Moss, Joshua Merrell, Kelsey McMahon, and Jesse Anderson
+ * @authors Alan Moss, Joshua Merrell, Kelsey McMahon
  */
 public class Dungeon
 {
